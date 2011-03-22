@@ -1,6 +1,8 @@
 class BlogsController < ApplicationController
   before_filter :check_general_content, :only => [:show,:edit]
 
+  before_filter :date_filter, :only => :show
+
   def index
     @blogs = Blog.all
   end
@@ -45,13 +47,21 @@ class BlogsController < ApplicationController
   end
 
   private
-    def check_general_content
-      begin
-        Blog.general_stuff.find(params[:id])
-        return true
-      rescue
-        redirect_to blogs_path, :notice => 'This is NOT a General Content !!!'
-      end
+
+  def check_general_content
+    begin
+      Blog.general_stuff.find(params[:id])
+      return true
+    rescue
+      redirect_to blogs_path, :notice => 'This is NOT a General Content !!!'
     end
+  end
+
+  def date_filter
+    @p = Blog.find(params[:id])
+    if(@p.created_at.day > 21)
+      redirect_to blogs_path, :notice => 'This Post is more than 5 days old !!!'
+    end
+  end
 
 end
