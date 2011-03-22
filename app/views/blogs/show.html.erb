@@ -1,0 +1,40 @@
+<h1>Showing Desired Post</h1>
+
+<p>
+  <b>Author:</b>
+  <%= @blog.author %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @blog.email %>
+</p>
+
+<p>
+  <b>General Content:</b>
+  <%= @blog.general_content %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @blog.category %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @blog.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @blog.description %>
+</p>
+
+<p>
+  <b>Posted Date:</b>
+  <%= @blog.created_at.to_date %>
+</p>
+
+
+<%= link_to 'Edit', edit_blog_path(@student) %> |
+<%= link_to 'Back to Index', blogs_path %>

@@ -1,0 +1,43 @@
+<%= form_for(@blog) do |b| %>
+
+  <% if @blog.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@blog.errors.count, "error") %> have been encountered!! </h2>
+    <ul>
+      <% @blog.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class = "field">
+    <%= b.label :author %><br />
+    <%= b.text_field :author %>
+  </div>
+  <div class = "field">
+    <%= b.label :email %><br />
+    <%= b.text_field :email %>
+  </div>
+  <div class = "field">
+    <%= b.label :general_content %>
+    <%= b.check_box :general_content %>
+  </div>
+  <div class = "field">
+     <%= b.label :category %><br />
+     <%= b.text_field :category %>
+   </div>
+  <div class = "field">
+    <%= b.label :title %><br />
+    <%= b.text_field :title %>
+  </div>
+  <div class = "field">
+    <%= b.label :description %><br />
+    <%= b.text_area :description%>
+  </div>
+
+  <div class="actions">
+    <%= b.submit %>
+  </div>
+
+<% end %>

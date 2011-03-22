@@ -1,0 +1,21 @@
+<h1>All Posts</h1>
+
+<% @blogs.each do |post| %>
+  <ul>
+  <li> <span>Author: </span> <%= post.author %> </li>
+  <li> <span>Email: </span> <%= post.email %> </li>
+  <li> <span>General Content: </span> <%= post.general_content %> </li>
+  <li> <span>Category: </span> <%= post.category %> </li>
+  <li> <span>Posted Date: </span> <%= post.created_at.to_date %> </li>
+  <li> <span>Title: </span> <%= post.title %> </li>
+  <li> <span>Description: </span> <%= post.description %> </li>
+
+  <%= link_to 'Show', post %>
+  <%= link_to 'Edit', edit_blog_path(post) %>
+  <%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %>
+  </ul>
+
+<% end %>
+
+  <br />
+  <%= link_to 'Create a new Post', new_blog_path %>
